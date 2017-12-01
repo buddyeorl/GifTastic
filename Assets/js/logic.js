@@ -8,10 +8,14 @@
 
 
 // Global Variables //
-var topics= [];
-
+var topics= []; //store all topics added by the user
+var imagesStill= []; //store still gifs
+var imagesOriginal= []; //store moving gifs
+var isGifActive=[]; // check if gif is active or not
 
 // functions
+
+// userInput will take the value in the input box and add create a button with that name
 function userInput()
 {
 	var userInput = $("#userInput").val();
@@ -24,12 +28,14 @@ function userInput()
 	}
 }
 
+// addButton will add a button when user clicks on "go"
 function addButton()
 {
 	var buttonName = topics[topics.length - 1];
 	$(".topicButtons").append('<button'+ ' id="' + buttonName + '"' +' class="btn m-3">' + buttonName +'</button>')
 }
 
+// addGifs will add a set of 10 button related Gifs when the user clicks on a button
 function addGifs(buttonName)
 {
 	var queryURL = 'http://api.giphy.com/v1/gifs/search?q=' + buttonName + '&api_key=dc6zaTOxFJmzC&limit=11';
@@ -38,11 +44,31 @@ function addGifs(buttonName)
 	  method: 'GET'
 	}).done(function(response) {
 	  console.log(response.data[0].images.original.url);
-	  for (var i = 0; i <= 10; i++)
+	  for (var i = 1; i <= 10; i++)
 	  {
+	  	imagesStill["image" + i] =response.data[i].images.fixed_height_still.url;
+	  	imagesOriginal["image" + i] =response.data[i].images.original.url;
+	  	isGifActive["image" + i]=false; // this line will set all gifs as inactive.
 	  	$("#image" + i).css({'background' : 'url("' + response.data[i].images.fixed_height_still.url + '") no-repeat','background-size' : '100% 100%',});
+	    $("#image" + i).html("Rating: " + response.data[i].rating);
 	  }
 	});
+}
+
+// gifToActivate will activate or deactivate the gifs when clicked.
+function activateGifs(gifToActivate)
+{
+	console.log("insideactivate gifs" + imagesOriginal[gifToActivate])
+	if (isGifActive[gifToActivate] === false)
+	{
+		$("#" + gifToActivate).css({'background' : 'url("' + imagesOriginal[gifToActivate] + '") no-repeat','background-size' : '100% 100%',});
+		isGifActive[gifToActivate] = true;
+	}
+	else
+	{
+		$("#" + gifToActivate).css({'background' : 'url("' + imagesStill[gifToActivate] + '") no-repeat','background-size' : '100% 100%',});
+		isGifActive[gifToActivate] = false;
+	}
 }
 
 
@@ -58,6 +84,13 @@ function addGifs(buttonName)
 		console.log("inside button" + $(this).attr("id"));
 		addGifs($(this).attr("id"));
 	});
+
+	// below jquery will pick a button that will exist in the future and send it's id to the addGifs function to collect the right gifs
+	$("#imagePlacer").on("click",'div' ,function(){
+		console.log("inside div" + $(this).attr("id"));
+		activateGifs($(this).attr("id"));
+	});
+
 
 
 
