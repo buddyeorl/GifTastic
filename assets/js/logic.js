@@ -38,7 +38,7 @@ function addButton()
 // addGifs will add a set of 10 button related Gifs when the user clicks on a button
 function addGifs(buttonName)
 {
-	var queryURL = 'http://api.giphy.com/v1/gifs/search?q=' + buttonName + '&api_key=dc6zaTOxFJmzC&limit=11';
+	var queryURL = 'https://api.giphy.com/v1/gifs/search?q=' + buttonName + '&api_key=dc6zaTOxFJmzC&limit=11';
 	$.ajax({
 	  url: queryURL,
 	  method: 'GET'
