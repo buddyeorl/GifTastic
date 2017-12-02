@@ -11,3 +11,12 @@ header {
 	max-width: 90%;
 	max-height: 50%;
 }
+
+#buttonRow {
+	display : block;
+	text-align:center;
+}
+.topicButtons
+{
+	display:inline
+}
