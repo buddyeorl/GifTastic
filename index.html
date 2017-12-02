@@ -7,63 +7,63 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<link rel="stylesheet" href="assets/css/reset.css">
+	<link rel="stylesheet" href="assets/css/style.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 	<title>GifTastic</title>
 </head>
-<body class="p-0 mb-0 bg-dark text-white">
+<body class="p-0 mb-0 grad text-white">
 	<!-- HEADER STARTS HERE -->
 	<header>
-	<div class="p-5 mb-0 mt-0 pt-0 bg-white text-dark"></div>
-	<div class="p-5 mb-0 mt-0 pt-0 bg-white text-dark"> <p class="text-center text-info">GIFTASTIC!!</p></div>
-	<div class="p-5 mb-0 mt-0 pt-0 bg-secondary text-white"></div>
+	<div class="p-2 mb-0 mt-0 pt-0 grad text-dark"></div>
+	<div class="p-2 mb-0 mt-0 pt-0 grad text-dark"></div>
+	<div class="p-5 mb-0 mt-0 pt-0 grad text-dark" style= "background-image: url('assets/img/gamesLogo.png'); background-repeat: no-repeat;background-position: center center; background-size: contain;" > <p class="text-center text-info"></p></div>
+	<div class="p-2 mb-0 mt-0 pt-0 bg-grad text-white"></div>
   	</header>
 	<!-- ============================================= -->
 
 	
 	<div class="container-fluid">
 		<!-- THIS WILL SHOW THE INPUT BOX AND THE GO BUTTON -->
-  		<div class="row p-3 mb-2 bg-secondary text-white">
-			<div class="col-sm">
+  		<div class="row justify-content-md-center p-3 mb-2 text-white">
+			<div class="col-4">
 				<div class="input-group">
-    				<input id="userInput" type="text" class="form-control" placeholder="Search for..." aria-label="Search for...">
-    				<span class="input-group-btn">
-    					<button id="userInputButton" class="btn btn-danger" type="button">Go!</button>
-    				</span>
+    				<input id="userInput" type="text" class="form-control" placeholder="Search for a Game ... Or anything..." aria-label="Search for a Game ... Or anything...">
+    				<button id="userInputButton" class="btn btn-dark" type="button">Go!</button>
    				</div>
 			</div>
   		</div>
 		<!-- ============================================= -->
 
 		<!-- HERE THE BUTTONS WILL BE PLACED ONCE CREATED -->
-  		<div class="row p-3 mb-1 m-0 text-white">
-			<div class="topicButtons col-sm"></div>
+  		<div class="row justify-content-md-center p-3 mb-1 m-0 text-white">
+			<div class="topicButtons col-8"></div>
   		</div>
  		<!-- ============================================= -->
 
 
 		<!-- HERE THE GIFS WILL BE PLACED ONCE A USER CLICKS ON THE RELATED BUTTON -->		
-  		<div id="imagePlacer" class="container-fluid">
-			<div class="row justify-content-between"> 
+  		<div id="imagePlacer" class="container-fluid p-5 rounded">
+			<div class="row justify-content-between">
 				<div class="col-3">
-					<div id="image2" class="row p-2" style="height: 139px;">
+					<div id="image2" class="row p-2 rounded" style="height: 139px;">
 					</div>
-					<div id="image3" class="row bp-2" style="height: 248px;">
+					<div id="image3" class="row bp-2 rounded" style="height: 248px;">
 					</div>
 				</div>
-				<div id="image1" class="col-6 p-2" style="height: 387px;"></div>
+				<div id="image1" class="col-6 p-2 rounded" style="height: 387px;"></div>
 				<div class="col-3">
-					<div id="image4" class="row p-2" style="height: 139px;">
+					<div id="image4" class="row p-2 rounded" style="height: 139px;">
 					</div>
-					<div id="image5" class="row p-2" style="height: 248px;">
+					<div id="image5" class="row p-2 rounded" style="height: 248px;">
 					</div>
 				</div>
 			</div>
 			<div class="row"> 
-				<div id="image6" class="col-2" style="height: 139px;"></div>
-				<div id="image7" class="col-2" style="height: 139px;"></div>
-				<div id="image8" class="col-4" style="height: 139px;"></div>
-				<div id="image9" class="col-2" style="height: 139px;"></div>
-				<div id="image10" class="col-2" style="height: 139px;"></div>
+				<div id="image6" class="col-2 rounded" style="height: 248px;"></div>
+				<div id="image7" class="col-2 rounded" style="height: 248px;"></div>
+				<div id="image8" class="col-4 rounded" style="height: 248px;"></div>
+				<div id="image9" class="col-2 rounded" style="height: 248px;"></div>
+				<div id="image10" class="col-2 rounded" style="height: 248px;"></div>
 			</div>
   		</div>
  		<!-- ============================================= -->

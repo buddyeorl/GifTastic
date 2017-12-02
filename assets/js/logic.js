@@ -8,12 +8,29 @@
 
 
 // Global Variables //
-var topics= []; //store all topics added by the user
+var topics= ["Zelda","Pokemon Go","league of legends","World of Warcraft", "Starcraft", "diablo", "tetris"]; //store all topics added by the user
 var imagesStill= []; //store still gifs
 var imagesOriginal= []; //store moving gifs
 var isGifActive=[]; // check if gif is active or not
+var buttonColors = ["primary","secondary","success","danger","warning","info","light"]; // button colors from bootstrap layout
+var color= 0; // use this variable to set the first index in the button color array
+
 
 // functions
+// this will create the first set of buttons 
+function createFirstSet()
+{
+	for (var i=0;i<topics.length;i++)
+	{
+		var buttonName = topics[i];
+		$(".topicButtons").append('<button'+ ' id="' + buttonName + '"' +' class="btn btn-' + buttonColors[color]+ ' m-3">' + buttonName +'</button>')
+		color++;
+		if (color === 7)
+		{
+			color=0;
+		}
+	}
+}
 
 // userInput will take the value in the input box and add create a button with that name
 function userInput()
@@ -32,7 +49,12 @@ function userInput()
 function addButton()
 {
 	var buttonName = topics[topics.length - 1];
-	$(".topicButtons").append('<button'+ ' id="' + buttonName + '"' +' class="btn m-3">' + buttonName +'</button>')
+	$(".topicButtons").append('<button'+ ' id="' + buttonName + '"' +' class="btn btn-' + buttonColors[color]+ ' m-3">' + buttonName +'</button>')
+	color++;
+	if (color === 7)
+	{
+		color=0;
+	}
 }
 
 // addGifs will add a set of 10 button related Gifs when the user clicks on a button
@@ -73,11 +95,20 @@ function activateGifs(gifToActivate)
 
 
 // main process
-
+	//this will create the first set of buttons to be displayed in the website
+	createFirstSet();
+	
 	// user will type in a keyword which will be converted to a button when "Go" button has been clicked
 	$("#userInputButton").click(function() {
 		userInput();
 	});
+
+	$("#userInput").keypress(function(e) {
+		console.log("insideenter")
+        if(e.which == 13) {
+		userInput();
+        }
+    });
 
 	// below jquery will pick a button that will exist in the future and send it's id to the addGifs function to collect the right gifs
 	$(".topicButtons").on("click",'button' ,function(){
@@ -85,7 +116,8 @@ function activateGifs(gifToActivate)
 		addGifs($(this).attr("id"));
 	});
 
-	// below jquery will pick a button that will exist in the future and send it's id to the addGifs function to collect the right gifs
+
+	// below jquery will pick a button that will exist in the future and send it's id to the activateGifs function to collect the right gifs
 	$("#imagePlacer").on("click",'div' ,function(){
 		console.log("inside div" + $(this).attr("id"));
 		activateGifs($(this).attr("id"));
